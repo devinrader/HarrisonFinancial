@@ -1,0 +1,15 @@
+//
+//  TWLoginViewController.h
+//  HarrisonFinancial
+//
+//  Created by Devin Rader on 5/20/13.
+//  Copyright (c) 2013 Samples. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "TWLoginCredentialsViewController.h"
+#import "TWLoginTwoFactorViewController.h"
+
+@interface TWLoginViewController : UIViewController <TWLoginCredentialsDelegate, TWTwoFactorAuthDelegate>
+
+@end

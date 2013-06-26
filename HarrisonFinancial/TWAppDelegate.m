@@ -7,17 +7,66 @@
 //
 
 #import "TWAppDelegate.h"
+#import "TWMainViewController.h"
+#import "TWLoginViewController.h"
+#import "TWActivitiesNavigationViewController.h"
+#import "TWActivitiesTableViewController.h"
 
 @implementation TWAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Set the application defaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"YES", @"dial_queue",
+                                 @"http://devin.webscript.io/sendTFASMS", @"tfa_sms_url",
+                                 nil];
+                                 
+    [defaults registerDefaults:appDefaults];
+    [defaults synchronize];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    //UITabBarController - root container
+    TWMainViewController *main = [[TWMainViewController alloc] init];
+    
+    //UITableViewController - main content in nav controller
+    TWActivitiesTableViewController *activitiesTable = [[TWActivitiesTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    
+    //UINavigationController - tab in root container
+    TWActivitiesNavigationViewController *activitiesNavigation = [[TWActivitiesNavigationViewController alloc] initWithRootViewController:activitiesTable];
+    activitiesNavigation.tabBarItem.title = @"Home";
+    
+    // This is a non-functional placeholder tab
+    UIViewController *placeholder1 = [[UIViewController alloc]init];
+    [placeholder1.tabBarItem setTitle:@"Inbox"];
+    [placeholder1.tabBarItem setEnabled:NO];
+    
+    // This is a non-functional placeholder tab
+    UIViewController *placeholder2 = [[UIViewController alloc]init];
+    [placeholder2.tabBarItem setTitle:@"Products"];
+    [placeholder2.tabBarItem setEnabled:NO];
+    
+    [main addChildViewController:activitiesNavigation];
+    [main addChildViewController:placeholder1];
+    [main addChildViewController:placeholder2];
+    
+    self.window.rootViewController = main;
+    
+    //Create the login view and show as a modal
+    TWLoginViewController *login = [[TWLoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+    [self.window makeKeyAndVisible];
+    [self.window.rootViewController presentViewController:login animated:NO completion:nil];
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
