@@ -12,7 +12,7 @@
 
 #import "TWLoginViewNavigationOptionsDelegate.h"
 
-#import "AFJSONRequestOperation.h"
+//#import "AFJSONRequestOperation.h"
 
 @interface TWLoginViewController ()
 
@@ -46,9 +46,7 @@ NSMutableArray *options;
     _credentialsLoginController = [[TWLoginCredentialsViewController alloc] initWithNibName:@"LoginCredentialsView" bundle:nil];
     [_credentialsLoginController setDelegate:self];
     
-//    [_credentialsLoginController.view setBackgroundColor:[UIColor yellowColor]];
-    
-    [_vwLogin setBackgroundColor:[UIColor greenColor]];
+//    [_vwLogin setBackgroundColor:[UIColor greenColor]];
     [_vwLogin addSubview:_credentialsLoginController.view];
 
     [_credentialsLoginController.view addConstraint:
@@ -87,7 +85,7 @@ NSMutableArray *options;
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSString *devicePhoneNumber = [defaults stringForKey:@"device_phone_number"];
         NSString *tfaSmsUrl = [defaults stringForKey:@"tfa_sms_url"];
-        NSString *fromPhoneNumber = [defaults stringForKey:@"from_phone_number"];
+//        NSString *fromPhoneNumber = [defaults stringForKey:@"from_phone_number"];
         
         if (!devicePhoneNumber || !tfaSmsUrl)
         {
@@ -100,32 +98,32 @@ NSMutableArray *options;
         }
 
         //make a request to the TFA URL
-        NSURL *url  = [NSURL URLWithString:[tfaSmsUrl stringByAppendingFormat:@"?from=%@&to=%@", fromPhoneNumber, devicePhoneNumber]];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-
-            //check to see if we got true or false back and react accordingly
-            NSDictionary *result = (NSDictionary *)JSON;
-            
-            if ((BOOL)[result objectForKey:@"result"]) {
-    
-                _twoFactorLoginController = [[TWLoginTwoFactorViewController alloc] initWithNibName:@"LoginTwoFactorView" bundle:nil];
-                _twoFactorLoginController.delegate = self;
-            
-                [_credentialsLoginController.view removeFromSuperview];
-                [_vwLogin addSubview:_twoFactorLoginController.view];
-            }
-            else
-            {
-                //message send failed
-                //alert
-            }
-
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-            NSLog(@"%@", error.localizedDescription);
-        }];
+//        NSURL *url  = [NSURL URLWithString:[tfaSmsUrl stringByAppendingFormat:@"?from=%@&to=%@", fromPhoneNumber, devicePhoneNumber]];
+//        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//        AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+//
+//            //check to see if we got true or false back and react accordingly
+//            NSDictionary *result = (NSDictionary *)JSON;
+//            
+//            if ((BOOL)[result objectForKey:@"result"]) {
+//    
+//                _twoFactorLoginController = [[TWLoginTwoFactorViewController alloc] initWithNibName:@"LoginTwoFactorView" bundle:nil];
+//                _twoFactorLoginController.delegate = self;
+//            
+//                [_credentialsLoginController.view removeFromSuperview];
+//                [_vwLogin addSubview:_twoFactorLoginController.view];
+//            }
+//            else
+//            {
+//                //message send failed
+//                //alert
+//            }
+//
+//        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+//            NSLog(@"%@", error.localizedDescription);
+//        }];
         
-        [operation start];
+//        [operation start];
     }
     else
     {

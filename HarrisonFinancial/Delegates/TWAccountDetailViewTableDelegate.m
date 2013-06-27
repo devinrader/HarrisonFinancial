@@ -19,9 +19,9 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
-    if (section==0)
+    if (section==0) {
         return @"May 10";
-    
+    }
     return @"May 8";
 }
 

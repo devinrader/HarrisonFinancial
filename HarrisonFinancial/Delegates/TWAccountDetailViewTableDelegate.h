@@ -10,6 +10,6 @@
 
 @interface TWAccountDetailViewTableDelegate : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) NSMutableArray *data;
+@property NSMutableArray *data;
 
 @end

@@ -14,7 +14,6 @@
 -(void)loginTwoFactorViewController:(TWLoginTwoFactorViewController *)controller passedAuthentication:(BOOL)passed;
 @end
 
-
 @interface TWLoginTwoFactorViewController : UIViewController
 
 @property (weak, nonatomic) id<TWTwoFactorAuthDelegate> delegate;

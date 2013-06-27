@@ -11,6 +11,6 @@
 
 @interface TWCallAccountViewController : UIViewController
 
-@property TWAccount* account;
+@property (weak, nonatomic) TWAccount* account;
 
 @end
