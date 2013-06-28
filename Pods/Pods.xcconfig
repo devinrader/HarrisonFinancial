@@ -1,0 +1,10 @@
+ALWAYS_SEARCH_USER_PATHS = YES
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = ${PODS_HEADERS_SEARCH_PATHS}
+LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/TwilioSDK/Twilio"
+OTHER_LDFLAGS = -ObjC -lTwilioClient -lcrypto -lssl -framework AVFoundation -framework AudioToolbox -framework CFNetwork -framework CoreGraphics -framework MobileCoreServices -framework Security -framework SystemConfiguration
+OTHER_LD_FLAGS = $(inherited) -ObjC
+PODS_BUILD_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/AFNetworking" "${PODS_ROOT}/BuildHeaders/TwilioSDK"
+PODS_HEADERS_SEARCH_PATHS = ${PODS_PUBLIC_HEADERS_SEARCH_PATHS}
+PODS_PUBLIC_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/TwilioSDK"
+PODS_ROOT = ${SRCROOT}/Pods
