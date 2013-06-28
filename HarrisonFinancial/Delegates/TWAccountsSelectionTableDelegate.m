@@ -7,22 +7,27 @@
 //
 
 #import "TWAccountsSelectionTableDelegate.h"
-#import "TWCallAccountViewController.h"
+
+#import "TWDataStore.h"
 #import "TWAccount.h"
+
+#import "TWCallAccountViewController.h"
 
 @implementation TWAccountsSelectionTableDelegate
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_data count];
+    return [[[TWDataStore instance] accounts] count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"bcell"];
     
-    TWAccount *account = [_data objectAtIndex:indexPath.row];
+    TWAccount *account = [[[TWDataStore instance] accounts] objectAtIndex:indexPath.row];
     
     cell.textLabel.text = account.name;
+    
+    NSLog(@"Need to add the phone icon");
     //cell.imageView.image = ;
     
     return cell;
@@ -33,10 +38,9 @@
     //do I need to show confirmation alert here?
     
     TWCallAccountViewController *controller = [[TWCallAccountViewController alloc] initWithNibName:@"CallAccountView" bundle:nil];
-    controller.account = [_data objectAtIndex:indexPath.row];
+    controller.account = [[[TWDataStore instance] accounts] objectAtIndex:indexPath.row];
     
     [_nav presentViewController:controller animated:YES completion:nil];    
 }
-
 
 @end

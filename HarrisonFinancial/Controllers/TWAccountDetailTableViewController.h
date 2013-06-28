@@ -10,7 +10,7 @@
 
 #import "TWAccount.h"
 
-@interface TWAccountDetailViewController : UITableViewController
+@interface TWAccountDetailTableViewController : UITableViewController
 
 @property (weak, nonatomic) TWAccount* account;
 

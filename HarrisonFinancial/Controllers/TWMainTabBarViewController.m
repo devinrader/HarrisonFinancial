@@ -6,14 +6,15 @@
 //  Copyright (c) 2013 Samples. All rights reserved.
 //
 
-#import "TWMainViewController.h"
-#import "TWLoginViewController.h"
+#import "TWMainTabBarViewController.h"
 
-@interface TWMainViewController ()
+//#import "TWLoginViewController.h"
+
+@interface TWMainTabBarViewController ()
 
 @end
 
-@implementation TWMainViewController
+@implementation TWMainTabBarViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

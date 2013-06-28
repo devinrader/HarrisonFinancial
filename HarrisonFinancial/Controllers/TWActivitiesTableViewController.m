@@ -7,13 +7,14 @@
 //
 
 #import "TWActivitiesTableViewController.h"
-#import "TWAccountsViewController.h"
+
+#import "TWDataStore.h"
+
+#import "TWAccountsTableViewController.h"
 
 @interface TWActivitiesTableViewController ()
 
 @end
-
-NSMutableArray *_options;
 
 @implementation TWActivitiesTableViewController
 
@@ -33,16 +34,10 @@ NSMutableArray *_options;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.title = @"Harrison Financial";
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = backButton;
-
-    _options = [NSMutableArray arrayWithObjects:@"My Accounts", @"Transfer", @"Deposit", @"Pay Bills", @"Document Center", @"Locations", nil];
-
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,19 +46,19 @@ NSMutableArray *_options;
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark - Table view datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [_options count];
+    return [[[TWDataStore instance] activitiesNavigationOptions] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    cell.textLabel.text =  [_options objectAtIndex:indexPath.row];
+    cell.textLabel.text =  [[[TWDataStore instance] activitiesNavigationOptions] objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -73,7 +68,7 @@ NSMutableArray *_options;
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    TWAccountsViewController *accounts = [TWAccountsViewController alloc];
+    TWAccountsTableViewController *accounts = [TWAccountsTableViewController alloc];
     [self.navigationController pushViewController:accounts animated:YES];
 }
 
@@ -81,7 +76,7 @@ NSMutableArray *_options;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TWAccountsViewController *accounts = [TWAccountsViewController alloc];
+    TWAccountsTableViewController *accounts = [TWAccountsTableViewController alloc];
     [self.navigationController pushViewController:accounts animated:YES];
 }
 

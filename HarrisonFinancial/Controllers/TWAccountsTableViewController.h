@@ -8,5 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TWAccountsViewController : UITableViewController
+@interface TWAccountsTableViewController : UITableViewController
+
 @end

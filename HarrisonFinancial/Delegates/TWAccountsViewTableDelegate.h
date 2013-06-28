@@ -10,8 +10,6 @@
 
 @interface TWAccountsViewTableDelegate : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) NSMutableArray *data;
-
 @property (weak, nonatomic) UINavigationController *nav;
 
 @end

@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface TWTransaction : NSObject
-@property (weak, nonatomic) NSString* title;
+@property (nonatomic) NSString* title;
 @property (nonatomic) double amount;
 @property (nonatomic) double balance;
-@property (weak, nonatomic) NSDate* transactionDate;
+@property (nonatomic) NSDate* transactionDate;
 
--(id)initWithName: (NSString*)n Amount:(double)a Balance:(double)b TransactionDate:(NSDate*)d;
+-(id)initWithName: (NSString*)n Amount:(double)a Balance:(double)b Date:(NSDate*)d;
 
 @end

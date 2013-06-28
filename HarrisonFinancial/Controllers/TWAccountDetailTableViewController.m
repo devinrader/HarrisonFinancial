@@ -6,25 +6,24 @@
 //  Copyright (c) 2013 Samples. All rights reserved.
 //
 
-#import "TWAccountDetailViewController.h"
+#import "TWAccountDetailTableViewController.h"
 #import "TWAccountDetailViewTableDelegate.h"
+#import "TWAccountDetailSelectionTableDelegate.h"
 #import "TWAccountDetailHeaderViewController.h"
-#import "TWTransaction.h"
+#import "TWDataStore.h"
 
-@interface TWAccountDetailViewController ()
+@interface TWAccountDetailTableViewController ()
 @property (weak, nonatomic) IBOutlet UITableViewCell *tcAccount;
 @property (weak, nonatomic) IBOutlet UITableView *tblAccountDetails;
-
 @end
 
-TWAccountDetailHeaderViewController *_header;
+TWAccountDetailHeaderViewController *_tableheaderView;
 TWAccountDetailViewTableDelegate *_detailTableDelegate;
+TWAccountDetailSelectionTableDelegate *_detailSelectionDelegate;
 
 BOOL isDetailSelecting = NO;
 
-NSMutableArray *transactions;
-
-@implementation TWAccountDetailViewController
+@implementation TWAccountDetailTableViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,21 +41,23 @@ NSMutableArray *transactions;
     self.navigationItem.title=@"Checking";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Call Us" style:UIBarButtonSystemItemAction target:self action:@selector(CallUs:)];
     
-    transactions = [self buildData];
-    
-    _detailTableDelegate = [[TWAccountDetailViewTableDelegate alloc] init];
-    _detailTableDelegate.data = transactions;
-    
-    _header = [[TWAccountDetailHeaderViewController alloc] init];
-    _header = [[TWAccountDetailHeaderViewController alloc] initWithNibName:@"AccountDetailsHeaderView" bundle:nil];
-    CGRect newFrame = _header.view.frame;
+    //Prep the table header
+    _tableheaderView = [[TWAccountDetailHeaderViewController alloc] init];
+    _tableheaderView = [[TWAccountDetailHeaderViewController alloc] initWithNibName:@"AccountDetailsHeaderView" bundle:nil];
+    CGRect newFrame = _tableheaderView.view.frame;
     newFrame.size.height = 44;
-    _header.view.frame = newFrame;
+    _tableheaderView.view.frame = newFrame;
+
+    _detailTableDelegate = [[TWAccountDetailViewTableDelegate alloc] init];
+    _detailTableDelegate.nav = self.navigationController;
     
+    _detailSelectionDelegate = [[TWAccountDetailSelectionTableDelegate alloc] init];
+    _detailSelectionDelegate.nav = self.navigationController;
+
     [self.tableView setDelegate:_detailTableDelegate];
     [self.tableView setDataSource:_detailTableDelegate];
-    [self.tableView setTableHeaderView:_header.view];
-
+    [self.tableView setTableHeaderView:_tableheaderView.view];
+    
     _tcAccount.textLabel.text = [[self account] name];
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -77,18 +78,16 @@ NSMutableArray *transactions;
         isDetailSelecting = NO;
         self.navigationItem.rightBarButtonItem.title = @"Call Us";
         
-        _detailTableDelegate.data = [self buildData];
-        
         [self.tableView beginUpdates];
         [self.tableView setDelegate:_detailTableDelegate];
         [self.tableView setDataSource:_detailTableDelegate];
         [self.tableView reloadData];
 
-        CGRect newFrame = _header.view.frame;
+        CGRect newFrame = _tableheaderView.view.frame;
         newFrame.size.height = 44;
-        _header.view.frame = newFrame;
+        _tableheaderView.view.frame = newFrame;
         
-        [self.tableView setTableHeaderView:_header.view];
+        [self.tableView setTableHeaderView:_tableheaderView.view];
 
         [self.tableView endUpdates];
     }
@@ -97,47 +96,24 @@ NSMutableArray *transactions;
         isDetailSelecting = YES;
         self.navigationItem.rightBarButtonItem.title = @"Done";
         
-        _detailTableDelegate.data = [self buildData];
-
         [self.tableView beginUpdates];
-        [self.tableView setDelegate:_detailTableDelegate];
-        [self.tableView setDataSource:_detailTableDelegate];
+        [self.tableView setDelegate:_detailSelectionDelegate];
+        [self.tableView setDataSource:_detailSelectionDelegate];
         [self.tableView reloadData];
         
-        CGRect newFrame = _header.view.frame;
+        CGRect newFrame = _tableheaderView.view.frame;
         newFrame.size.height = 78;
-        _header.view.frame = newFrame;
+        _tableheaderView.view.frame = newFrame;
         
-        [self.tableView setTableHeaderView:_header.view];
+        [self.tableView setTableHeaderView:_tableheaderView.view];
         [self.tableView endUpdates];
         
     }
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-- (NSMutableArray*)buildData {
-    
-    NSMutableArray *array;
-    
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"MM/dd/yyyy"];
-    
-    array = [NSMutableArray arrayWithObjects:
-                    [[TWTransaction alloc] initWithName:@"Check 192" Amount:101.00 Balance:901.78 TransactionDate:[df dateFromString:@"5/10/2013"]],
-                    [[TWTransaction alloc] initWithName:@"Check 188" Amount:237.00 Balance:1002.78 TransactionDate:[df dateFromString:@"5/10/2013"]],
-                    [[TWTransaction alloc] initWithName:@"PGE - online pay" Amount:182.15 Balance:1239.78 TransactionDate:[df dateFromString:@"5/8/2013"]],
-                    [[TWTransaction alloc] initWithName:@"Check x190" Amount:47.98 Balance:1421.93 TransactionDate:[df dateFromString:@"5/8/2013"]],
-                    [[TWTransaction alloc] initWithName:@"Allied W - online pay" Amount:312.05 Balance:1469.82 TransactionDate:[df dateFromString:@"5/8/2013"]],
-                    [[TWTransaction alloc] initWithName:@"Check x191" Amount:27.54 Balance:1784.37 TransactionDate:[df dateFromString:@"5/8/2013"]],
-                    nil];
-    
-    return array;
 }
 @end

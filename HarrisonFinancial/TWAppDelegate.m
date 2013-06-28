@@ -7,7 +7,8 @@
 //
 
 #import "TWAppDelegate.h"
-#import "TWMainViewController.h"
+#import "TWMainTabBarViewController.h"
+
 #import "TWLoginViewController.h"
 #import "TWActivitiesNavigationViewController.h"
 #import "TWActivitiesTableViewController.h"
@@ -16,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     // Set the application defaults
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -30,7 +32,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     //UITabBarController - root container
-    TWMainViewController *main = [[TWMainViewController alloc] init];
+    TWMainTabBarViewController *main = [[TWMainTabBarViewController alloc] init];
     
     //UITableViewController - main content in nav controller
     TWActivitiesTableViewController *activitiesTable = [[TWActivitiesTableViewController alloc] initWithStyle:UITableViewStylePlain];

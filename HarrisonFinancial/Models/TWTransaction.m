@@ -10,7 +10,7 @@
 
 @implementation TWTransaction
 
--(id)initWithName: (NSString*)n Amount:(double)a Balance:(double)b TransactionDate:(NSDate*)d{
+-(id)initWithName: (NSString*)n Amount:(double)a Balance:(double)b Date:(NSDate*)d{
     
     if (self = [super init])
     {

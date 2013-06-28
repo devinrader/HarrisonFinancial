@@ -10,8 +10,6 @@
 
 @interface TWLoginViewNavigationOptionsDelegate : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) NSMutableArray *data;
-
 @end
 
 

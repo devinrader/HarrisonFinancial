@@ -8,16 +8,18 @@
 
 #import "TWLoginViewNavigationOptionsDelegate.h"
 
+#import "TWDataStore.h"
+
 @implementation TWLoginViewNavigationOptionsDelegate
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[self data] count];
+    return [[[TWDataStore instance] homeNavigationOptions] count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"lcell"];
     
-    cell.textLabel.text = [[self data] objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[[TWDataStore instance] homeNavigationOptions] objectAtIndex:indexPath.row];
     
     return cell;
 }

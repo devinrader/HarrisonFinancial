@@ -7,6 +7,8 @@
 //
 
 #import "TWAccountDetailViewTableDelegate.h"
+#import "TWCallAccountDetailsViewController.h"
+#import "TWDataStore.h"
 #import "TWTransaction.h"
 
 @implementation TWAccountDetailViewTableDelegate
@@ -14,6 +16,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     NSArray *array = [self createFilteredArray:section];
+    
     return array.count;
 }
 
@@ -31,7 +34,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"acell"];
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"ccell"];
     
     NSArray *array = [self createFilteredArray:indexPath.section];
     
@@ -55,9 +58,16 @@
     return cell;
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    //do I need to show confirmation alert here?
+//    
+//    TWCallAccountDetailsViewController *controller = [[TWCallAccountDetailsViewController alloc] initWithNibName:@"CallAccountDetailView" bundle:nil];
+//    controller.transaction = [[[TWDataStore instance] transactions] objectAtIndex:indexPath.row];
+//    
+//    [[self nav] presentViewController:controller animated:YES completion:nil];
 //}
+
 
 - (NSArray*)createFilteredArray:(NSInteger) section {
 
@@ -66,14 +76,12 @@
     [df setDateFormat:@"MM/dd/yyyy"];
     
     if (section==0) {
-        //filter the data
         NSPredicate *p = [NSPredicate predicateWithFormat:@"transactionDate > %@", [df dateFromString:@"5/9/2013"]];
-        filtered = [_data filteredArrayUsingPredicate:p];
+        filtered = [[[TWDataStore instance] transactions] filteredArrayUsingPredicate:p];
     }
     else{
-        //filter the data
         NSPredicate *p = [NSPredicate predicateWithFormat:@"transactionDate < %@", [df dateFromString:@"5/9/2013"]];
-        filtered = [_data filteredArrayUsingPredicate:p];
+        filtered = [[[TWDataStore instance] transactions] filteredArrayUsingPredicate:p];
     }
     
     return filtered;
