@@ -49,14 +49,14 @@ NSMutableArray *options;
     
     [_vwLogin addSubview:_credentialsLoginController.view];
 
-    [_credentialsLoginController.view addConstraint:
-    [NSLayoutConstraint constraintWithItem:_credentialsLoginController.view
-                                  attribute:NSLayoutAttributeCenterX
-                                  relatedBy:NSLayoutRelationEqual
-                                     toItem:_credentialsLoginController.view
-                                  attribute:NSLayoutAttributeCenterX
-                                 multiplier:1
-                                   constant:0]];
+//    [_credentialsLoginController.view addConstraint:
+//    [NSLayoutConstraint constraintWithItem:_credentialsLoginController.view
+//                                  attribute:NSLayoutAttributeCenterX
+//                                  relatedBy:NSLayoutRelationEqual
+//                                     toItem:_credentialsLoginController.view
+//                                  attribute:NSLayoutAttributeCenterX
+//                                 multiplier:1
+//                                   constant:0]];
     
     
     _navOptionsDelegate = [[TWLoginViewNavigationOptionsDelegate alloc] init];

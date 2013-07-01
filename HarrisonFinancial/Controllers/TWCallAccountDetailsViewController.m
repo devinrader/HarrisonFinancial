@@ -34,6 +34,10 @@ TWPhone *_phone;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"Background"]];
+    [[self view] setBackgroundColor:background];
+
 
     [[self lblItem] setText:[NSString stringWithFormat:@"Item: %@", self.transaction.title]];
     [[self lblBalance] setText:[NSString stringWithFormat:@"Amount: %.02f", self.transaction.amount]];

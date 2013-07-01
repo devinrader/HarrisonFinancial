@@ -17,6 +17,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"Background"]];
+    UIImage* homeImage = [UIImage imageNamed:@"home.png"];
+    UIImage* prodImage = [UIImage imageNamed:@"product.png"];
+    UIImage* inbxImage = [UIImage imageNamed:@"inbox.png"];
     
     // Set the application defaults
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -36,29 +40,38 @@
     
     //UITableViewController - main content in nav controller
     TWActivitiesTableViewController *activitiesTable = [[TWActivitiesTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    activitiesTable.view.backgroundColor = background;
     
     //UINavigationController - tab in root container
     TWActivitiesNavigationViewController *activitiesNavigation = [[TWActivitiesNavigationViewController alloc] initWithRootViewController:activitiesTable];
     activitiesNavigation.tabBarItem.title = @"Home";
+    activitiesNavigation.tabBarItem.image = homeImage;
+    activitiesNavigation.navigationBar.barStyle=UIBarStyleBlack;
     
     // This is a non-functional placeholder tab
     UIViewController *placeholder1 = [[UIViewController alloc]init];
     [placeholder1.tabBarItem setTitle:@"Inbox"];
+    [placeholder1.tabBarItem setImage:inbxImage];
     [placeholder1.tabBarItem setEnabled:NO];
     
     // This is a non-functional placeholder tab
     UIViewController *placeholder2 = [[UIViewController alloc]init];
     [placeholder2.tabBarItem setTitle:@"Products"];
+    [placeholder2.tabBarItem setImage:prodImage];
     [placeholder2.tabBarItem setEnabled:NO];
     
     [main addChildViewController:activitiesNavigation];
     [main addChildViewController:placeholder1];
     [main addChildViewController:placeholder2];
-    
+
+    main.view.backgroundColor = background;
     self.window.rootViewController = main;
+
     
     //Create the login view and show as a modal
     TWLoginViewController *login = [[TWLoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+    login.view.backgroundColor = background;
+
     [self.window makeKeyAndVisible];
     [self.window.rootViewController presentViewController:login animated:NO completion:nil];
     

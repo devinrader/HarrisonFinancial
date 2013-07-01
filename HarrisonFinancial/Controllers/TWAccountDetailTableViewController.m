@@ -38,6 +38,9 @@ BOOL isDetailSelecting = NO;
 {
     [super viewDidLoad];
     
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"Background"]];
+    [[self view] setBackgroundColor:background];
+
     self.navigationItem.title=@"Checking";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Call Us" style:UIBarButtonSystemItemAction target:self action:@selector(CallUs:)];
     

@@ -39,6 +39,9 @@ BOOL isSelecting = NO;
 {
     [super viewDidLoad];
     
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"Background"]];
+    [[self view] setBackgroundColor:background];
+    
     self.navigationItem.title=@"Accounts";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Call Us" style:UIBarButtonSystemItemAction target:self action:@selector(CallUs:)];
     
@@ -77,6 +80,7 @@ BOOL isSelecting = NO;
     
         //put the table into selection mode
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60,0,260,40)];
+        [label setBackgroundColor:[UIColor clearColor]];
         [label setText:@"Select an item to call"];
         [label setTextAlignment:NSTextAlignmentCenter];
         

@@ -28,6 +28,14 @@
 		1F58666C174C1964009E6980 /* TWAccountDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F58666B174C1964009E6980 /* TWAccountDetailTableViewController.m */; };
 		1F586676174D1C06009E6980 /* TWAccountDetailViewTableDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F586675174D1C05009E6980 /* TWAccountDetailViewTableDelegate.m */; };
 		1F586679174D1C35009E6980 /* TWTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F586678174D1C35009E6980 /* TWTransaction.m */; };
+		1F7945D41780AD29000B27F8 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7945D31780AD29000B27F8 /* icon.png */; };
+		1F7945D61780AD35000B27F8 /* Spash_screen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7945D51780AD35000B27F8 /* Spash_screen@2x.png */; };
+		1F7945D81780AD38000B27F8 /* Spash_screen-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7945D71780AD38000B27F8 /* Spash_screen-568h@2x.png */; };
+		1F7945DA1780AD3D000B27F8 /* Spash_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7945D91780AD3D000B27F8 /* Spash_screen.png */; };
+		1F7945DC1780AF07000B27F8 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7945DB1780AF07000B27F8 /* Background.png */; };
+		1F7945E01781B4BD000B27F8 /* product.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7945DD1781B4BC000B27F8 /* product.png */; };
+		1F7945E11781B4BD000B27F8 /* inbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7945DE1781B4BD000B27F8 /* inbox.png */; };
+		1F7945E21781B4BD000B27F8 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7945DF1781B4BD000B27F8 /* home.png */; };
 		1F8F3027177B41F100A32F21 /* TWPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F3026177B3F9200A32F21 /* TWPhone.m */; };
 		1FDA3984177CE60000AB1399 /* TWCallAccountDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA3983177CE60000AB1399 /* TWCallAccountDetailsViewController.m */; };
 		1FDA3986177CE61000AB1399 /* CallAccountDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FDA3985177CE61000AB1399 /* CallAccountDetailsView.xib */; };
@@ -98,6 +106,14 @@
 		1F586675174D1C05009E6980 /* TWAccountDetailViewTableDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWAccountDetailViewTableDelegate.m; path = Delegates/TWAccountDetailViewTableDelegate.m; sourceTree = "<group>"; };
 		1F586677174D1C35009E6980 /* TWTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWTransaction.h; path = Models/TWTransaction.h; sourceTree = "<group>"; };
 		1F586678174D1C35009E6980 /* TWTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWTransaction.m; path = Models/TWTransaction.m; sourceTree = "<group>"; };
+		1F7945D31780AD29000B27F8 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		1F7945D51780AD35000B27F8 /* Spash_screen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Spash_screen@2x.png"; path = "../Spash_screen@2x.png"; sourceTree = "<group>"; };
+		1F7945D71780AD38000B27F8 /* Spash_screen-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Spash_screen-568h@2x.png"; path = "../Spash_screen-568h@2x.png"; sourceTree = "<group>"; };
+		1F7945D91780AD3D000B27F8 /* Spash_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Spash_screen.png; path = ../Spash_screen.png; sourceTree = "<group>"; };
+		1F7945DB1780AF07000B27F8 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background.png; path = ../Background.png; sourceTree = "<group>"; };
+		1F7945DD1781B4BC000B27F8 /* product.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = product.png; sourceTree = "<group>"; };
+		1F7945DE1781B4BD000B27F8 /* inbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inbox.png; sourceTree = "<group>"; };
+		1F7945DF1781B4BD000B27F8 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		1F8F3025177B3F9200A32F21 /* TWPhone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWPhone.h; sourceTree = "<group>"; };
 		1F8F3026177B3F9200A32F21 /* TWPhone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TWPhone.m; sourceTree = "<group>"; };
 		1FDA3982177CE60000AB1399 /* TWCallAccountDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWCallAccountDetailsViewController.h; path = HarrisonFinancial/Controllers/TWCallAccountDetailsViewController.h; sourceTree = "<group>"; };
@@ -269,6 +285,14 @@
 		1FE9B597174B0A5800A54259 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1F7945DD1781B4BC000B27F8 /* product.png */,
+				1F7945DE1781B4BD000B27F8 /* inbox.png */,
+				1F7945DF1781B4BD000B27F8 /* home.png */,
+				1F7945DB1780AF07000B27F8 /* Background.png */,
+				1F7945D91780AD3D000B27F8 /* Spash_screen.png */,
+				1F7945D71780AD38000B27F8 /* Spash_screen-568h@2x.png */,
+				1F7945D51780AD35000B27F8 /* Spash_screen@2x.png */,
+				1F7945D31780AD29000B27F8 /* icon.png */,
 				1FE9B598174B0A5800A54259 /* HarrisonFinancial-Info.plist */,
 				1FE9B599174B0A5800A54259 /* InfoPlist.strings */,
 				1FE9B59C174B0A5800A54259 /* main.m */,
@@ -403,6 +427,14 @@
 				1FF782F61778F00A00BCF11F /* CallAccountView.xib in Resources */,
 				1F3EE1EB174FF45F00DF2DD1 /* Settings.bundle in Resources */,
 				1FDA3986177CE61000AB1399 /* CallAccountDetailsView.xib in Resources */,
+				1F7945D41780AD29000B27F8 /* icon.png in Resources */,
+				1F7945D61780AD35000B27F8 /* Spash_screen@2x.png in Resources */,
+				1F7945D81780AD38000B27F8 /* Spash_screen-568h@2x.png in Resources */,
+				1F7945DA1780AD3D000B27F8 /* Spash_screen.png in Resources */,
+				1F7945DC1780AF07000B27F8 /* Background.png in Resources */,
+				1F7945E01781B4BD000B27F8 /* product.png in Resources */,
+				1F7945E11781B4BD000B27F8 /* inbox.png in Resources */,
+				1F7945E21781B4BD000B27F8 /* home.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,7 +638,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -627,7 +659,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
